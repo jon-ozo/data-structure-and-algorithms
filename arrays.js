@@ -29,7 +29,7 @@ function twoSum(array, targetNum) {
 	}
 }
 
-console.log(twoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 15));
+// console.log(twoSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 15));
 
 // ---------------------------------------------------------
 // ---------------------------------------------------------
@@ -254,15 +254,17 @@ const secondMaxValue = (arr) => {
  */
 
 const moveZeroToEndOfArray = (arr) => {
-	let zeroValue;
+	// let zeroValue;
 	let index = 0;
+	let tempValue;
 
 	for (let i = 0; i < arr.length; i++) {
-		if (arr[i] !== 0) {
-			index++;
+		if (arr[i] !== 0 && arr[index] === 0) {
+			tempValue = arr[i];
+			arr[i] = arr[index];
+			arr[index] = tempValue;
 		}
-		if (arr[i] === 0) {
-			zeroValue = arr[i];
+		if (arr[index] !== 0) {
 			index++;
 		}
 	}
@@ -270,7 +272,7 @@ const moveZeroToEndOfArray = (arr) => {
 	return arr;
 };
 
-// console.log(moveZeroToEndOfArray([1, 2, 3, 0, 5, 0, 4, 0, 10]));
+console.log(moveZeroToEndOfArray([1, 2, 3, 0, 5, 0, 0, 4, 0, 0, 10]));
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 class MyArray {
