@@ -272,9 +272,74 @@ const moveZeroToEndOfArray = (arr) => {
 	return arr;
 };
 
-console.log(moveZeroToEndOfArray([1, 2, 3, 0, 5, 0, 0, 4, 0, 0, 10]));
+// console.log(moveZeroToEndOfArray([1, 2, 3, 0, 5, 0, 0, 4, 0, 0, 10]));
+
 // --------------------------------------------------------------
 // --------------------------------------------------------------
+/**
+ * task: resize an array
+ * [1, 2, 3, 4, 5] [6, 7, 8, 9, 10]
+ *
+ * return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+ *
+ * algorithm
+ * - get the last index of the first array object
+ * - loop through the second array object
+ * - pass the value into the first array object starting from the last index
+ * - increase the last index count
+ * - return the first array object
+ */
+
+const concat = (arr1, arr2) => {
+	let lastIndex = arr1.length;
+
+	for (let i = 0; i < arr2.length; i++) {
+		arr1[lastIndex] = arr2[i];
+		lastIndex++;
+	}
+
+	return arr1;
+};
+
+// console.time('time');
+// console.log(resizeArray([1, 2, 3, 4, 5], [6, 7, 8, 9, 10]));
+// console.timeEnd('time');
+
+// --------------------------------------------------------------
+// --------------------------------------------------------------
+
+/**
+ * task: find the missing number
+ * [1,2,3,5,6,7,8,9,10];
+ *
+ * return 4;
+ *
+ * algorithm - using the formula: n (n + 1) / 2
+ * - store array length in a variable
+ * - create a variable to hold the result of the formula
+ * - loop through the arr
+ * - subtract each value from the result of the formula
+ * - return the result
+ */
+
+const findMissingNumber = (arr) => {
+	let length = arr.length + 1;
+	let result = (length * (length + 1)) / 2;
+
+	for (let i = 0; i < arr.length; i++) {
+		result -= arr[i];
+	}
+
+	return result;
+};
+
+console.time('time');
+console.log(findMissingNumber([1, 2, 3, 5, 6, 7, 8, 9, 10]));
+console.timeEnd('time');
+
+// --------------------------------------------------------------
+// --------------------------------------------------------------
+
 class MyArray {
 	constructor() {
 		this.length = 0;
