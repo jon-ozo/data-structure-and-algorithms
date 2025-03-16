@@ -254,11 +254,11 @@ const secondMaxValue = (arr) => {
  */
 
 const moveZeroToEndOfArray = (arr) => {
-	// let zeroValue;
+	let length = arr.length;
 	let index = 0;
 	let tempValue;
 
-	for (let i = 0; i < arr.length; i++) {
+	for (let i = 0; i < length; i++) {
 		if (arr[i] !== 0 && arr[index] === 0) {
 			tempValue = arr[i];
 			arr[i] = arr[index];
@@ -273,6 +273,7 @@ const moveZeroToEndOfArray = (arr) => {
 };
 
 // console.log(moveZeroToEndOfArray([1, 2, 3, 0, 5, 0, 0, 4, 0, 0, 10]));
+// console.log(moveZeroToEndOfArray([0, 1, 0, 4, 12]));
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
@@ -322,6 +323,8 @@ const concat = (arr1, arr2) => {
  * - return the result
  */
 
+const arr = [1, 2, 3, 5, 6, 7, 8, 9, 10];
+console.log(arr.length + 1);
 const findMissingNumber = (arr) => {
 	let length = arr.length + 1;
 	let result = (length * (length + 1)) / 2;
@@ -333,10 +336,104 @@ const findMissingNumber = (arr) => {
 	return result;
 };
 
-console.time('time');
-console.log(findMissingNumber([1, 2, 3, 5, 6, 7, 8, 9, 10]));
-console.timeEnd('time');
+// console.time('time');
+// console.log(findMissingNumber([1, 2, 3, 5, 6, 7, 8, 9, 10]));
+// console.timeEnd('time');
 
+//---------------------------------------------------------------
+//---------------------------------------------------------------
+function palindrome1(str) {
+	const strReversed = str.split('').reverse().join('');
+
+	return str === strReversed;
+}
+
+// console.time('time');
+// console.log(palindrome1('Kayak'));
+// console.timeEnd('time');
+
+// matching the case of the string
+function palindrome2(str) {
+	const strToLowerCase = str.toLowerCase();
+	const strReversed = str.split('').reverse().join('').toLowerCase();
+
+	return strToLowerCase === strReversed;
+}
+
+// console.time('time');
+// console.log(palindrome2('codingmoney'));
+// console.timeEnd('time');
+
+const palindrome = (str) => {
+	const length = str.length - 1;
+	let newStr = '';
+
+	for (let i = length; i >= 0; i--) {
+		newStr += str[i];
+	}
+
+	return str.toLowerCase() === newStr.toLowerCase();
+};
+
+// console.time('time');
+// console.log(palindrome('foo'));
+// console.timeEnd('time');
+
+const palindromeUsingTwoPointers = (str) => {
+	let pointer = str.length - 1;
+
+	for (let i = 0; i < pointer; i++) {
+		if (str[i] !== str[pointer]) return false;
+
+		pointer--;
+	}
+
+	return true;
+};
+
+// console.time('time');
+// console.log(palindromeUsingTwoPointers('tint'));
+// console.timeEnd('time');
+
+// --------------------------------------------------------------
+// --------------------------------------------------------------
+
+/**
+ * task: find the second maximum number
+ * [12,34,2,34,33,1]; 12
+ *
+ * return 33;
+ *
+ * algorithm
+ * - get the value of the first element in the array and store as the max number in a variable
+ * - create a variable to hold the second max number
+ * - loop through the arr starting at the second element
+ * - compare the element to the max number variable:
+ *      if it is greater than the max num set second max num to the max num and max num to the new value
+ *      if it is greater than second max but not equal to max set second max to the new value
+ * - return the result
+ */
+
+const secondMaxNum = (arr) => {
+	let length = arr.length;
+	let max = arr[0];
+	let secondMax;
+
+	for (let i = 1; i < length; i++) {
+		if (arr[i] > max) {
+			secondMax = max;
+			max = arr[i];
+		}
+
+		if (arr[i] > secondMax && arr[i] !== max) {
+			secondMax = arr[i];
+		}
+	}
+
+	return secondMax;
+};
+
+// console.log(secondMaxNum([12, 34, 2, 34, 33, 1]));
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 
